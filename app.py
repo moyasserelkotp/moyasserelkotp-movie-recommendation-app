@@ -36,15 +36,14 @@ st.markdown("""
 st.sidebar.image("moviel__1_-removebg-preview.png", width=200) 
 
 # Load dataset
-@st.cache_data
-def load_data():
-    # Download from Google Drive
-    url = "https://drive.google.com/uc?id=1QPIs-M-0Mc44hu_vGW5PuB-TCx7Ro7ca"
-    output = "df1.csv"
-    gdown.download(url, output, quiet=False)
-    return pd.read_csv(output)
+file_id = "1QPIs-M-0Mc44hu_vGW5PuB-TCx7Ro7ca"
+# Create the direct download URL
+url = f"https://drive.google.com/uc?id={file_id}"
+# Optional: specify the output filename
+output = "data.csv"  # change extension if it's not CSV
+gdown.download(url, output, quiet=False)
 
-df = load_data()
+df = pd.read_csv("data.csv")
 
 
 # Sidebar header for filter section
