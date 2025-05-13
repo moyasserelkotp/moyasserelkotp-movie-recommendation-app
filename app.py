@@ -7,6 +7,7 @@ import pandas as pd
 import os
 import warnings
 import calendar
+import gdown
 warnings.filterwarnings('ignore')
 
 
@@ -35,7 +36,15 @@ st.markdown("""
 st.sidebar.image("moviel__1_-removebg-preview.png", width=200) 
 
 # Load dataset
-df = pd.read_csv("df1.csv")
+@st.cache_data
+def load_data():
+    # Download from Google Drive
+    url = "https://drive.google.com/uc?id=1QPIs-M-0Mc44hu_vGW5PuB-TCx7Ro7ca"
+    output = "df1.csv"
+    gdown.download(url, output, quiet=False)
+    return pd.read_csv(output)
+
+df = load_data()
 
 
 # Sidebar header for filter section
