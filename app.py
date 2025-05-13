@@ -43,7 +43,7 @@ url = f"https://drive.google.com/uc?id={file_id}"
 output = "data.csv"  # change extension if it's not CSV
 gdown.download(url, output, quiet=False)
 
-df = pd.read_csv("data.csv")
+df = pd.read_csv("data.csv",nrows=5000)
 
 
 # Sidebar header for filter section
